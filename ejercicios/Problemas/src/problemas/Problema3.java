@@ -21,14 +21,28 @@ public class Problema3 {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
 
+        String datos = "";
+        String mensaje = "";
         double[] notas = new double[4];
         for (int i = 0; i < notas.length; i++) {
-            System.out.printf("Ingrese la nota en la posición [%d]"
-                    ,i);
+            System.out.printf("Ingrese la nota en la posición [%d]",
+                    i);
             notas[i] = entrada.nextDouble();
         }
-        
-        System.out
+        for (int i = 0; i < notas.length; i++) {
+            datos = String.format("%s%.2f,", datos, notas[i]);
+        }
+        String promedioC = obtenerPromedioC(notas);
+        mensaje = String.format("%sEl promedio de las notas %s es %s",
+                 mensaje, datos, promedioC);
     }
 
+    public static String obtenerPromedioC(double[] calif) {
+        double suma = 0;
+        double promedio = 0;
+        for (int i = 0; i < calif.length; i++) {
+            suma = suma + calif[i];
+        }
+        promedio = suma/calif.length;
+    }
 }
